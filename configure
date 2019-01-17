@@ -1,4 +1,6 @@
 --disable-arch-native
 --datadir=/usr/share/squid
+--sysconfdir=/etc/squid
+--with-logdir=/var/log/squid
 --enable-linux-netfilter
 --with-default-user=squid

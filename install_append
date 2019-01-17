@@ -1,0 +1,3 @@
+mkdir -p %{buildroot}/usr/share/doc/squid
+install squid.conf.default %{buildroot}/usr/share/doc/squid/
+install src/mime.conf.default %{buildroot}/usr/share/doc/squid/

@@ -8,13 +8,12 @@
 [Unit]
 Description=Squid Web Proxy Server
 Documentation=man:squid(8)
-After=network.target network-online.target nss-lookup.target
+After=network.target
 
 [Service]
-Type=forking
 PIDFile=/run/squid.pid
 ExecStartPre=/usr/sbin/squid --foreground -z
-ExecStart=/usr/sbin/squid -sYC
+ExecStart=/usr/sbin/squid -sYNC
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=mixed
 

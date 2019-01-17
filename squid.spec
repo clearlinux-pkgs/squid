@@ -6,7 +6,7 @@
 #
 Name     : squid
 Version  : 4.5
-Release  : 5
+Release  : 6
 URL      : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz
 Source0  : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz
 Source1  : squid.service
@@ -36,6 +36,7 @@ BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(mit-krb5)
 BuildRequires : pkgconfig(mit-krb5-gssapi)
 BuildRequires : pkgconfig(openssl)
+Patch1: 0001-Add-template-squid.conf.patch
 
 %description
 SQUID Web Proxy Cache                        http://www.squid-cache.org/
@@ -69,6 +70,15 @@ Group: Data
 
 %description data
 data components for the squid package.
+
+
+%package doc
+Summary: doc components for the squid package.
+Group: Documentation
+Requires: squid-man = %{version}-%{release}
+
+%description doc
+doc components for the squid package.
 
 
 %package libexec
@@ -107,15 +117,18 @@ services components for the squid package.
 
 %prep
 %setup -q -n squid-4.5
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547681401
+export SOURCE_DATE_EPOCH=1547759417
 %configure --disable-static --disable-arch-native \
 --datadir=/usr/share/squid \
+--sysconfdir=/etc/squid \
+--with-logdir=/var/log/squid \
 --enable-linux-netfilter \
 --with-default-user=squid
 make  %{?_smp_mflags}
@@ -128,7 +141,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1547681401
+export SOURCE_DATE_EPOCH=1547759417
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
 cp COPYING %{buildroot}/usr/share/package-licenses/squid/COPYING
@@ -139,6 +152,11 @@ mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/squid.service
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d
 install -m 0644 %{SOURCE2} %{buildroot}/usr/lib/tmpfiles.d/squid.conf
+## install_append content
+mkdir -p %{buildroot}/usr/share/doc/squid
+install squid.conf.default %{buildroot}/usr/share/doc/squid/
+install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -2310,6 +2328,10 @@ install -m 0644 %{SOURCE2} %{buildroot}/usr/lib/tmpfiles.d/squid.conf
 /usr/share/squid/icons/silk/script_gear.png
 /usr/share/squid/icons/silk/script_palette.png
 /usr/share/squid/mib.txt
+
+%files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/doc/squid/*
 
 %files libexec
 %defattr(-,root,root,-)

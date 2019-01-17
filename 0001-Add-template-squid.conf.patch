@@ -1,0 +1,59 @@
+From 9f6687e8c723dde2df5415ab6eceb82620e0c9b2 Mon Sep 17 00:00:00 2001
+From: Auke Kok <auke-jan.h.kok@intel.com>
+Date: Thu, 17 Jan 2019 13:01:34 -0800
+Subject: [PATCH] Add template squid.conf
+
+---
+ squid.conf | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+ create mode 100644 squid.conf
+
+diff --git a/squid.conf.default b/squid.conf.default
+new file mode 100644
+index 0000000..4947ece
+--- /dev/null
++++ b/squid.conf.default
+@@ -0,0 +1,40 @@
++http_port 3128
++
++acl localnet src 10.0.0.0/8     # RFC1918 possible internal network
++acl localnet src 172.16.0.0/12  # RFC1918 possible internal network
++acl localnet src 192.168.0.0/16 # RFC1918 possible internal network
++acl localnet src fc00::/7       # RFC 4193 local private network range
++acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
++
++acl SSL_ports port 443
++
++acl Safe_ports port 80          # http
++acl Safe_ports port 21          # ftp
++acl Safe_ports port 443         # https
++acl Safe_ports port 70          # gopher
++acl Safe_ports port 210         # wais
++acl Safe_ports port 280         # http-mgmt
++acl Safe_ports port 488         # gss-http
++acl Safe_ports port 591         # filemaker
++acl Safe_ports port 777         # multiling http
++acl Safe_ports port 1025-65535  # unregistered ports
++
++acl CONNECT method CONNECT
++
++http_access deny !Safe_ports
++http_access deny CONNECT !SSL_ports
++http_access allow localhost manager
++http_access deny manager
++
++#
++# INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
++#
++
++http_access allow localnet
++http_access allow localhost
++http_access deny all
++
++refresh_pattern ^ftp:           1440    20%     10080
++refresh_pattern ^gopher:        1440    0%      1440
++refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
++refresh_pattern .               0       20%     4320
+-- 
+2.20.0
+
