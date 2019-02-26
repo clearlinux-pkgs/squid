@@ -60,6 +60,12 @@ Configure miss: le16toh
 Configure miss: __le16toh
 Configure miss: le32toh
 Configure miss: __le32toh
+Configure miss: db.h usability
+Configure miss: db.h presence
+Configure miss: db.h
+Configure miss: db_185.h usability
+Configure miss: db_185.h presence
+Configure miss: db_185.h
 Configure miss: wbinfo
 Configure miss: bstring.h usability
 Configure miss: bstring.h presence

@@ -6,13 +6,13 @@
 #
 Name     : squid
 Version  : 4.5
-Release  : 6
+Release  : 7
 URL      : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz
 Source0  : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz
 Source1  : squid.service
 Source2  : squid.tmpfiles
 Source99 : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz.asc
-Summary  : No detailed summary available
+Summary  : Full-featured Web proxy cache server
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
 Requires: squid-bin = %{version}-%{release}
@@ -24,7 +24,6 @@ Requires: squid-man = %{version}-%{release}
 Requires: squid-services = %{version}-%{release}
 BuildRequires : Linux-PAM-dev
 BuildRequires : cyrus-sasl-dev
-BuildRequires : db-dev
 BuildRequires : e2fsprogs-dev
 BuildRequires : expat-dev
 BuildRequires : krb5-dev
@@ -39,8 +38,17 @@ BuildRequires : pkgconfig(openssl)
 Patch1: 0001-Add-template-squid.conf.patch
 
 %description
-SQUID Web Proxy Cache                        http://www.squid-cache.org/
-------------------------------------------------------------------------
+This is GNU libltdl, a system independent dlopen wrapper for GNU libtool.
+It supports the following dlopen interfaces:
+* dlopen (POSIX)
+* shl_load (HP-UX)
+* LoadLibrary (Win16 and Win32)
+* load_add_on (BeOS)
+* GNU DLD (emulates dynamic linking for static libraries)
+* dyld (darwin/Mac OS X)
+* libtool's dlpreopen
+--
+Written by Thomas Tanner, 1999
 
 %package bin
 Summary: bin components for the squid package.
@@ -49,7 +57,6 @@ Requires: squid-data = %{version}-%{release}
 Requires: squid-libexec = %{version}-%{release}
 Requires: squid-config = %{version}-%{release}
 Requires: squid-license = %{version}-%{release}
-Requires: squid-man = %{version}-%{release}
 Requires: squid-services = %{version}-%{release}
 
 %description bin
@@ -124,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547759417
+export SOURCE_DATE_EPOCH=1551153595
 %configure --disable-static --disable-arch-native \
 --datadir=/usr/share/squid \
 --sysconfdir=/etc/squid \
@@ -141,7 +148,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1547759417
+export SOURCE_DATE_EPOCH=1551153595
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
 cp COPYING %{buildroot}/usr/share/package-licenses/squid/COPYING
@@ -2358,9 +2365,7 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 /usr/libexec/ext_file_userip_acl
 /usr/libexec/ext_kerberos_ldap_group_acl
 /usr/libexec/ext_ldap_group_acl
-/usr/libexec/ext_session_acl
 /usr/libexec/ext_sql_session_acl
-/usr/libexec/ext_time_quota_acl
 /usr/libexec/ext_unix_group_acl
 /usr/libexec/ext_wbinfo_group_acl
 /usr/libexec/helper-mux
@@ -2401,9 +2406,7 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 /usr/share/man/man8/ext_edirectory_userip_acl.8
 /usr/share/man/man8/ext_file_userip_acl.8
 /usr/share/man/man8/ext_ldap_group_acl.8
-/usr/share/man/man8/ext_session_acl.8
 /usr/share/man/man8/ext_sql_session_acl.8
-/usr/share/man/man8/ext_time_quota_acl.8
 /usr/share/man/man8/ext_unix_group_acl.8
 /usr/share/man/man8/ext_wbinfo_group_acl.8
 /usr/share/man/man8/helper-mux.8
