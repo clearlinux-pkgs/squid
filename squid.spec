@@ -5,16 +5,16 @@
 # Source0 file verified with key 0xCD6DBF8EF3B17D3E (squid3@treenet.co.nz)
 #
 Name     : squid
-Version  : 4.5
-Release  : 7
-URL      : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz
-Source0  : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz
+Version  : 4.8
+Release  : 8
+URL      : http://www.squid-cache.org/Versions/v4/squid-4.8.tar.gz
+Source0  : http://www.squid-cache.org/Versions/v4/squid-4.8.tar.gz
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source99 : http://www.squid-cache.org/Versions/v4/squid-4.5.tar.gz.asc
-Summary  : Full-featured Web proxy cache server
+Source99 : http://www.squid-cache.org/Versions/v4/squid-4.8.tar.gz.asc
+Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause GPL-2.0 LGPL-2.1
+License  : GPL-2.0 LGPL-2.1
 Requires: squid-bin = %{version}-%{release}
 Requires: squid-config = %{version}-%{release}
 Requires: squid-data = %{version}-%{release}
@@ -26,6 +26,7 @@ BuildRequires : Linux-PAM-dev
 BuildRequires : cyrus-sasl-dev
 BuildRequires : e2fsprogs-dev
 BuildRequires : expat-dev
+BuildRequires : glib-dev
 BuildRequires : krb5-dev
 BuildRequires : libcap-dev
 BuildRequires : openldap-dev
@@ -38,17 +39,8 @@ BuildRequires : pkgconfig(openssl)
 Patch1: 0001-Add-template-squid.conf.patch
 
 %description
-This is GNU libltdl, a system independent dlopen wrapper for GNU libtool.
-It supports the following dlopen interfaces:
-* dlopen (POSIX)
-* shl_load (HP-UX)
-* LoadLibrary (Win16 and Win32)
-* load_add_on (BeOS)
-* GNU DLD (emulates dynamic linking for static libraries)
-* dyld (darwin/Mac OS X)
-* libtool's dlpreopen
---
-Written by Thomas Tanner, 1999
+SQUID Web Proxy Cache                        http://www.squid-cache.org/
+------------------------------------------------------------------------
 
 %package bin
 Summary: bin components for the squid package.
@@ -123,15 +115,20 @@ services components for the squid package.
 
 
 %prep
-%setup -q -n squid-4.5
+%setup -q -n squid-4.8
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1551153595
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1563911895
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --disable-arch-native \
 --datadir=/usr/share/squid \
 --sysconfdir=/etc/squid \
@@ -141,18 +138,17 @@ export SOURCE_DATE_EPOCH=1551153595
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1551153595
+export SOURCE_DATE_EPOCH=1563911895
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
 cp COPYING %{buildroot}/usr/share/package-licenses/squid/COPYING
-cp errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/errors_COPYRIGHT
 cp libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/libltdl_COPYING.LIB
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
@@ -2385,7 +2381,6 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/squid/COPYING
-/usr/share/package-licenses/squid/errors_COPYRIGHT
 /usr/share/package-licenses/squid/libltdl_COPYING.LIB
 
 %files man

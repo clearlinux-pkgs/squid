@@ -1,9 +1,10 @@
-4.5
+4.8
 Linux-PAM-dev
 cyrus-sasl-dev
 db-dev
 e2fsprogs-dev
 expat-dev
+glib-dev
 krb5-dev
 libcap-dev
 openldap-dev
