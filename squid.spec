@@ -7,11 +7,11 @@
 Name     : squid
 Version  : 4.8
 Release  : 8
-URL      : http://www.squid-cache.org/Versions/v4/squid-4.8.tar.gz
-Source0  : http://www.squid-cache.org/Versions/v4/squid-4.8.tar.gz
+URL      : http://squid.mirror.colo-serv.net/archive/4/squid-4.8.tar.gz
+Source0  : http://squid.mirror.colo-serv.net/archive/4/squid-4.8.tar.gz
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source99 : http://www.squid-cache.org/Versions/v4/squid-4.8.tar.gz.asc
+Source99 : http://squid.mirror.colo-serv.net/archive/4/squid-4.8.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
