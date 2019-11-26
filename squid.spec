@@ -5,16 +5,16 @@
 # Source0 file verified with key 0xCD6DBF8EF3B17D3E (squid3@treenet.co.nz)
 #
 Name     : squid
-Version  : 4.8
-Release  : 8
-URL      : http://squid.mirror.colo-serv.net/archive/4/squid-4.8.tar.gz
-Source0  : http://squid.mirror.colo-serv.net/archive/4/squid-4.8.tar.gz
+Version  : 4.9
+Release  : 9
+URL      : http://squid.mirror.colo-serv.net/archive/4/squid-4.9.tar.gz
+Source0  : http://squid.mirror.colo-serv.net/archive/4/squid-4.9.tar.gz
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source99 : http://squid.mirror.colo-serv.net/archive/4/squid-4.8.tar.gz.asc
+Source3 : http://squid.mirror.colo-serv.net/archive/4/squid-4.9.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : BSD-3-Clause GPL-2.0 LGPL-2.1
 Requires: squid-bin = %{version}-%{release}
 Requires: squid-config = %{version}-%{release}
 Requires: squid-data = %{version}-%{release}
@@ -115,7 +115,8 @@ services components for the squid package.
 
 
 %prep
-%setup -q -n squid-4.8
+%setup -q -n squid-4.9
+cd %{_builddir}/squid-4.9
 %patch1 -p1
 
 %build
@@ -123,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563911895
+export SOURCE_DATE_EPOCH=1574807984
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -145,11 +146,12 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1563911895
+export SOURCE_DATE_EPOCH=1574807984
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
-cp COPYING %{buildroot}/usr/share/package-licenses/squid/COPYING
-cp libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/libltdl_COPYING.LIB
+cp %{_builddir}/squid-4.9/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/squid-4.9/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/edd599f5cf176700a402c67b76d5a331fd117358
+cp %{_builddir}/squid-4.9/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/squid.service
@@ -2380,8 +2382,9 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/squid/COPYING
-/usr/share/package-licenses/squid/libltdl_COPYING.LIB
+/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/squid/edd599f5cf176700a402c67b76d5a331fd117358
 
 %files man
 %defattr(0644,root,root,0755)
