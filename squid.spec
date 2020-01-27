@@ -5,13 +5,13 @@
 # Source0 file verified with key 0xCD6DBF8EF3B17D3E (squid3@treenet.co.nz)
 #
 Name     : squid
-Version  : 4.9
-Release  : 9
-URL      : http://squid.mirror.colo-serv.net/archive/4/squid-4.9.tar.gz
-Source0  : http://squid.mirror.colo-serv.net/archive/4/squid-4.9.tar.gz
+Version  : 5.0.1
+Release  : 10
+URL      : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.1.tar.xz
+Source0  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.1.tar.xz
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source3 : http://squid.mirror.colo-serv.net/archive/4/squid-4.9.tar.gz.asc
+Source3  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.1.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -115,8 +115,8 @@ services components for the squid package.
 
 
 %prep
-%setup -q -n squid-4.9
-cd %{_builddir}/squid-4.9
+%setup -q -n squid-5.0.1
+cd %{_builddir}/squid-5.0.1
 %patch1 -p1
 
 %build
@@ -124,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1574807984
+export SOURCE_DATE_EPOCH=1580154118
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -146,12 +146,12 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1574807984
+export SOURCE_DATE_EPOCH=1580154118
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
-cp %{_builddir}/squid-4.9/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/squid-4.9/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/edd599f5cf176700a402c67b76d5a331fd117358
-cp %{_builddir}/squid-4.9/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/squid-5.0.1/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/squid-5.0.1/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/e4b03a8e99bffb9f286bc85f80169006f4e6b7f7
+cp %{_builddir}/squid-5.0.1/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/squid.service
@@ -2362,6 +2362,7 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 /usr/libexec/ext_edirectory_userip_acl
 /usr/libexec/ext_file_userip_acl
 /usr/libexec/ext_kerberos_ldap_group_acl
+/usr/libexec/ext_kerberos_sid_group_acl
 /usr/libexec/ext_ldap_group_acl
 /usr/libexec/ext_sql_session_acl
 /usr/libexec/ext_unix_group_acl
@@ -2384,7 +2385,7 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
 /usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
-/usr/share/package-licenses/squid/edd599f5cf176700a402c67b76d5a331fd117358
+/usr/share/package-licenses/squid/e4b03a8e99bffb9f286bc85f80169006f4e6b7f7
 
 %files man
 %defattr(0644,root,root,0755)
@@ -2403,6 +2404,7 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 /usr/share/man/man8/ext_delayer_acl.8
 /usr/share/man/man8/ext_edirectory_userip_acl.8
 /usr/share/man/man8/ext_file_userip_acl.8
+/usr/share/man/man8/ext_kerberos_sid_group_acl.8
 /usr/share/man/man8/ext_ldap_group_acl.8
 /usr/share/man/man8/ext_sql_session_acl.8
 /usr/share/man/man8/ext_unix_group_acl.8
