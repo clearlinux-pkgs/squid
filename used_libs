@@ -19,4 +19,5 @@ libresolv.so.2
 librt.so.1
 libsasl2.so.3
 libstdc++.so.6
+libsystemd.so.0
 libxml2.so.2
