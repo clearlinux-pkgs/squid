@@ -4,7 +4,6 @@ Configure miss: sys/dl.h
 Configure miss: dld.h
 Configure miss: mach-o/dyld.h
 Configure miss: whether compiler requires -Werror -Wno-deprecated-register
-Configure miss: library containing __atomic_load_8
 Configure miss: whether to support eCAP
 Configure miss: MD5Init in -lmd5
 Configure miss: krb5_get_err_text in -lkrb5
