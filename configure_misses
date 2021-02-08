@@ -97,7 +97,6 @@ Configure miss: varargs.h
 Configure miss: glib.h usability
 Configure miss: glib.h presence
 Configure miss: glib.h
-Configure miss: linux/netfilter_ipv6/ip6_tables.h
 Configure miss: netinet/ipl.h
 Configure miss: net/pf/pfvar.h
 Configure miss: net/pfvar.h

@@ -5,13 +5,13 @@
 # Source0 file verified with key 0xCD6DBF8EF3B17D3E (squid3@treenet.co.nz)
 #
 Name     : squid
-Version  : 5.0.4
-Release  : 13
-URL      : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.4.tar.xz
-Source0  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.4.tar.xz
+Version  : 5.0.5
+Release  : 14
+URL      : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.5.tar.xz
+Source0  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.5.tar.xz
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source3  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.4.tar.xz.asc
+Source3  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.5.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -24,7 +24,6 @@ Requires: squid-man = %{version}-%{release}
 Requires: squid-services = %{version}-%{release}
 BuildRequires : Linux-PAM-dev
 BuildRequires : cyrus-sasl-dev
-BuildRequires : e2fsprogs-dev
 BuildRequires : expat-dev
 BuildRequires : glib-dev
 BuildRequires : krb5-dev
@@ -116,8 +115,8 @@ services components for the squid package.
 
 
 %prep
-%setup -q -n squid-5.0.4
-cd %{_builddir}/squid-5.0.4
+%setup -q -n squid-5.0.5
+cd %{_builddir}/squid-5.0.5
 %patch1 -p1
 
 %build
@@ -125,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598312047
+export SOURCE_DATE_EPOCH=1612820830
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -147,12 +146,12 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1598312047
+export SOURCE_DATE_EPOCH=1612820830
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
-cp %{_builddir}/squid-5.0.4/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/squid-5.0.4/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/e4b03a8e99bffb9f286bc85f80169006f4e6b7f7
-cp %{_builddir}/squid-5.0.4/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/squid-5.0.5/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/squid-5.0.5/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/3f1336acb1ff0f71783781a3242f54966888e1b2
+cp %{_builddir}/squid-5.0.5/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/squid.service
@@ -656,15 +655,59 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 /usr/share/squid/errors/en/error-details.txt
 /usr/share/squid/errors/es-ar
 /usr/share/squid/errors/es-bo
+/usr/share/squid/errors/es-bz
 /usr/share/squid/errors/es-cl
 /usr/share/squid/errors/es-co
 /usr/share/squid/errors/es-cr
+/usr/share/squid/errors/es-cu
 /usr/share/squid/errors/es-do
 /usr/share/squid/errors/es-ec
 /usr/share/squid/errors/es-es
 /usr/share/squid/errors/es-gt
 /usr/share/squid/errors/es-hn
-/usr/share/squid/errors/es-mx
+/usr/share/squid/errors/es-mx/ERR_ACCESS_DENIED
+/usr/share/squid/errors/es-mx/ERR_ACL_TIME_QUOTA_EXCEEDED
+/usr/share/squid/errors/es-mx/ERR_AGENT_CONFIGURE
+/usr/share/squid/errors/es-mx/ERR_AGENT_WPAD
+/usr/share/squid/errors/es-mx/ERR_CACHE_ACCESS_DENIED
+/usr/share/squid/errors/es-mx/ERR_CACHE_MGR_ACCESS_DENIED
+/usr/share/squid/errors/es-mx/ERR_CANNOT_FORWARD
+/usr/share/squid/errors/es-mx/ERR_CONFLICT_HOST
+/usr/share/squid/errors/es-mx/ERR_CONNECT_FAIL
+/usr/share/squid/errors/es-mx/ERR_DIR_LISTING
+/usr/share/squid/errors/es-mx/ERR_DNS_FAIL
+/usr/share/squid/errors/es-mx/ERR_ESI
+/usr/share/squid/errors/es-mx/ERR_FORWARDING_DENIED
+/usr/share/squid/errors/es-mx/ERR_FTP_DISABLED
+/usr/share/squid/errors/es-mx/ERR_FTP_FAILURE
+/usr/share/squid/errors/es-mx/ERR_FTP_FORBIDDEN
+/usr/share/squid/errors/es-mx/ERR_FTP_NOT_FOUND
+/usr/share/squid/errors/es-mx/ERR_FTP_PUT_CREATED
+/usr/share/squid/errors/es-mx/ERR_FTP_PUT_ERROR
+/usr/share/squid/errors/es-mx/ERR_FTP_PUT_MODIFIED
+/usr/share/squid/errors/es-mx/ERR_FTP_UNAVAILABLE
+/usr/share/squid/errors/es-mx/ERR_GATEWAY_FAILURE
+/usr/share/squid/errors/es-mx/ERR_ICAP_FAILURE
+/usr/share/squid/errors/es-mx/ERR_INVALID_REQ
+/usr/share/squid/errors/es-mx/ERR_INVALID_RESP
+/usr/share/squid/errors/es-mx/ERR_INVALID_URL
+/usr/share/squid/errors/es-mx/ERR_LIFETIME_EXP
+/usr/share/squid/errors/es-mx/ERR_NO_RELAY
+/usr/share/squid/errors/es-mx/ERR_ONLY_IF_CACHED_MISS
+/usr/share/squid/errors/es-mx/ERR_PRECONDITION_FAILED
+/usr/share/squid/errors/es-mx/ERR_PROTOCOL_UNKNOWN
+/usr/share/squid/errors/es-mx/ERR_READ_ERROR
+/usr/share/squid/errors/es-mx/ERR_READ_TIMEOUT
+/usr/share/squid/errors/es-mx/ERR_SECURE_CONNECT_FAIL
+/usr/share/squid/errors/es-mx/ERR_SHUTTING_DOWN
+/usr/share/squid/errors/es-mx/ERR_SOCKET_FAILURE
+/usr/share/squid/errors/es-mx/ERR_TOO_BIG
+/usr/share/squid/errors/es-mx/ERR_UNSUP_HTTPVERSION
+/usr/share/squid/errors/es-mx/ERR_UNSUP_REQ
+/usr/share/squid/errors/es-mx/ERR_URN_RESOLVE
+/usr/share/squid/errors/es-mx/ERR_WRITE_ERROR
+/usr/share/squid/errors/es-mx/ERR_ZERO_SIZE_OBJECT
+/usr/share/squid/errors/es-mx/error-details.txt
 /usr/share/squid/errors/es-ni
 /usr/share/squid/errors/es-pa
 /usr/share/squid/errors/es-pe
@@ -1784,6 +1827,7 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 /usr/share/squid/errors/sl/ERR_WRITE_ERROR
 /usr/share/squid/errors/sl/ERR_ZERO_SIZE_OBJECT
 /usr/share/squid/errors/sl/error-details.txt
+/usr/share/squid/errors/spq
 /usr/share/squid/errors/sr
 /usr/share/squid/errors/sr-cyrl-cs
 /usr/share/squid/errors/sr-cyrl-me
@@ -2385,8 +2429,8 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/squid/3f1336acb1ff0f71783781a3242f54966888e1b2
 /usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
-/usr/share/package-licenses/squid/e4b03a8e99bffb9f286bc85f80169006f4e6b7f7
 
 %files man
 %defattr(0644,root,root,0755)

@@ -1,7 +1,6 @@
-5.0.4
+5.0.5
 Linux-PAM-dev
 cyrus-sasl-dev
-e2fsprogs-dev
 expat-dev
 glib-dev
 krb5-dev
