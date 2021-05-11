@@ -12,7 +12,6 @@ libldap-2.4.so.2
 libltdl.so.7
 libm.so.6
 libnettle.so.8
-libnsl.so.1
 libpam.so.0
 libpthread.so.0
 libresolv.so.2
