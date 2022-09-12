@@ -6,7 +6,7 @@
 #
 Name     : squid
 Version  : 5.0.7
-Release  : 16
+Release  : 17
 URL      : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.7.tar.xz
 Source0  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.7.tar.xz
 Source1  : squid.service
