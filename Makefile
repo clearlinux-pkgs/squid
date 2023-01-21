@@ -1,5 +1,5 @@
 PKG_NAME := squid
-URL = http://squid.mirror.colo-serv.net/archive/5/squid-5.0.7.tar.xz
+URL = http://www.squid-cache.org/Versions/v5/squid-5.7.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common

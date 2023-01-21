@@ -13,9 +13,6 @@ libltdl.so.7
 libm.so.6
 libnettle.so.8
 libpam.so.0
-libpthread.so.0
-libresolv.so.2
-librt.so.1
 libsasl2.so.3
 libstdc++.so.6
 libsystemd.so.0

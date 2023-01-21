@@ -5,13 +5,13 @@
 # Source0 file verified with key 0xCD6DBF8EF3B17D3E (squid3@treenet.co.nz)
 #
 Name     : squid
-Version  : 5.0.7
-Release  : 17
-URL      : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.7.tar.xz
-Source0  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.7.tar.xz
+Version  : 5.7
+Release  : 18
+URL      : http://www.squid-cache.org/Versions/v5/squid-5.7.tar.xz
+Source0  : http://www.squid-cache.org/Versions/v5/squid-5.7.tar.xz
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source3  : http://squid.mirror.colo-serv.net/archive/5/squid-5.0.7.tar.xz.asc
+Source3  : http://www.squid-cache.org/Versions/v5/squid-5.7.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -36,6 +36,9 @@ BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(mit-krb5)
 BuildRequires : pkgconfig(mit-krb5-gssapi)
 BuildRequires : pkgconfig(openssl)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 Patch1: 0001-Add-template-squid.conf.patch
 
 %description
@@ -115,8 +118,8 @@ services components for the squid package.
 
 
 %prep
-%setup -q -n squid-5.0.7
-cd %{_builddir}/squid-5.0.7
+%setup -q -n squid-5.7
+cd %{_builddir}/squid-5.7
 %patch1 -p1
 
 %build
@@ -124,12 +127,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1626123757
+export SOURCE_DATE_EPOCH=1674261394
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 %configure --disable-static --disable-arch-native \
 --datadir=/usr/share/squid \
 --sysconfdir=/etc/squid \
@@ -146,12 +149,12 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1626123757
+export SOURCE_DATE_EPOCH=1674261394
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
-cp %{_builddir}/squid-5.0.7/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/squid-5.0.7/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/3f1336acb1ff0f71783781a3242f54966888e1b2
-cp %{_builddir}/squid-5.0.7/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/squid-%{version}/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+cp %{_builddir}/squid-%{version}/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/725128ff644f281c9ab33bc5946b23c7d0e276cf || :
+cp %{_builddir}/squid-%{version}/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/squid.service
@@ -2428,8 +2431,8 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
-/usr/share/package-licenses/squid/3f1336acb1ff0f71783781a3242f54966888e1b2
 /usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/squid/725128ff644f281c9ab33bc5946b23c7d0e276cf
 
 %files man
 %defattr(0644,root,root,0755)
