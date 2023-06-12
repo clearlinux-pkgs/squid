@@ -6,13 +6,13 @@
 # Source0 file verified with key 0xCD6DBF8EF3B17D3E (squid3@treenet.co.nz)
 #
 Name     : squid
-Version  : 5.7
-Release  : 19
-URL      : https://squid.mirror.globo.tech/archive/5/squid-5.7.tar.xz
-Source0  : https://squid.mirror.globo.tech/archive/5/squid-5.7.tar.xz
+Version  : 5.9
+Release  : 20
+URL      : https://squid.mirror.globo.tech/archive/5/squid-5.9.tar.xz
+Source0  : https://squid.mirror.globo.tech/archive/5/squid-5.9.tar.xz
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source3  : https://squid.mirror.globo.tech/archive/5/squid-5.7.tar.xz.asc
+Source3  : https://squid.mirror.globo.tech/archive/5/squid-5.9.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -121,8 +121,8 @@ services components for the squid package.
 
 
 %prep
-%setup -q -n squid-5.7
-cd %{_builddir}/squid-5.7
+%setup -q -n squid-5.9
+cd %{_builddir}/squid-5.9
 %patch -P 1 -p1
 
 %build
@@ -130,7 +130,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686240952
+export SOURCE_DATE_EPOCH=1686610298
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -152,11 +152,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1686240952
+export SOURCE_DATE_EPOCH=1686610298
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
 cp %{_builddir}/squid-%{version}/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c || :
-cp %{_builddir}/squid-%{version}/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/725128ff644f281c9ab33bc5946b23c7d0e276cf || :
+cp %{_builddir}/squid-%{version}/errors/COPYRIGHT %{buildroot}/usr/share/package-licenses/squid/bd8ef79f284c33d1a5c89e20f84db61dff649860 || :
 cp %{_builddir}/squid-%{version}/libltdl/COPYING.LIB %{buildroot}/usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
@@ -2435,7 +2435,7 @@ install src/mime.conf.default %{buildroot}/usr/share/doc/squid/
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/squid/01a6b4bf79aca9b556822601186afab86e8c4fbf
 /usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c
-/usr/share/package-licenses/squid/725128ff644f281c9ab33bc5946b23c7d0e276cf
+/usr/share/package-licenses/squid/bd8ef79f284c33d1a5c89e20f84db61dff649860
 
 %files man
 %defattr(0644,root,root,0755)

@@ -14,35 +14,27 @@ Configure miss: _res._u._ext.nsaddrs
 Configure miss: _res.ns_list
 Configure miss: _res_ext.nsaddr_list
 Configure miss: bstring.h
-Configure miss: bstring.h presence
-Configure miss: bstring.h usability
 Configure miss: bswap16
 Configure miss: bswap32
 Configure miss: bswap_16
 Configure miss: bswap_32
 Configure miss: db.h
-Configure miss: db.h presence
-Configure miss: db.h usability
-Configure miss: direct.h presence
-Configure miss: direct.h usability
 Configure miss: dld.h
 Configure miss: dld.h
 Configure miss: dld_link in -ldld
 Configure miss: dld_link in -ldld
 Configure miss: eui64_aton
+Configure miss: g++ option to enable C++11 features
+Configure miss: g++ options needed to detect all undeclared functions
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: glib.h
-Configure miss: glib.h presence
-Configure miss: glib.h usability
 Configure miss: gnumalloc.h
-Configure miss: gnumalloc.h presence
-Configure miss: gnumalloc.h usability
 Configure miss: htole16
 Configure miss: htole32
 Configure miss: if GNUregex needs to be compiled
 Configure miss: if strnstr is well implemented
 Configure miss: ipl.h
-Configure miss: ipl.h presence
-Configure miss: ipl.h usability
 Configure miss: krb5_free_error_string in -lkrb5
 Configure miss: krb5_get_err_text in -lkrb5
 Configure miss: krb5_get_max_time_skew in -lkrb5
@@ -51,14 +43,9 @@ Configure miss: ldapssl_client_init in -lldap
 Configure miss: le16toh
 Configure miss: le32toh
 Configure miss: libc.h
-Configure miss: libc.h presence
-Configure miss: libc.h usability
 Configure miss: libnetfilter_conntrack/libnetfilter_conntrack.h
-Configure miss: libnetfilter_conntrack/libnetfilter_conntrack.h presence
-Configure miss: libnetfilter_conntrack/libnetfilter_conntrack.h usability
 Configure miss: libnetfilter_conntrack/libnetfilter_conntrack_tcp.h
-Configure miss: libnetfilter_conntrack/libnetfilter_conntrack_tcp.h presence
-Configure miss: libnetfilter_conntrack/libnetfilter_conntrack_tcp.h usability
+Configure miss: library containing __res_search
 Configure miss: library containing nfct_query
 Configure miss: library containing opcom_stack_trace
 Configure miss: library containing res_init
@@ -68,21 +55,13 @@ Configure miss: libresolv _dns_ttl_ hack
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: machine/byte_swap.h
-Configure miss: machine/byte_swap.h presence
-Configure miss: machine/byte_swap.h usability
 Configure miss: main in -lmalloc
 Configure miss: malloc in -lgnumalloc
 Configure miss: mallocblksize
 Configure miss: mount.h
-Configure miss: mount.h presence
-Configure miss: mount.h usability
 Configure miss: mozldap/ldap.h
-Configure miss: mozldap/ldap.h presence
-Configure miss: mozldap/ldap.h usability
 Configure miss: mstats
 Configure miss: mswsock.h
-Configure miss: mswsock.h presence
-Configure miss: mswsock.h usability
 Configure miss: mtyp_t
 Configure miss: net/pf/pfvar.h
 Configure miss: net/pfvar.h
@@ -94,46 +73,28 @@ Configure miss: rpc/rpc.h
 Configure miss: rpcsvc/yp_prot.h
 Configure miss: rpcsvc/ypclnt.h
 Configure miss: sasl.h
-Configure miss: sasl.h presence
-Configure miss: sasl.h usability
 Configure miss: siginfo.h
-Configure miss: siginfo.h presence
-Configure miss: siginfo.h usability
 Configure miss: sin6_len field in struct sockaddr_in6
 Configure miss: sin_len field in struct sockaddr_in
 Configure miss: smbclient
 Configure miss: ss_len field in struct sockaddr_storage
 Configure miss: sys/bswap.h
-Configure miss: sys/bswap.h presence
-Configure miss: sys/bswap.h usability
 Configure miss: sys/devpoll.h
-Configure miss: sys/devpoll.h presence
-Configure miss: sys/devpoll.h usability
 Configure miss: sys/dl.h
 Configure miss: sys/dl.h
 Configure miss: sys/event.h
-Configure miss: sys/event.h presence
-Configure miss: sys/event.h usability
 Configure miss: sys/ipc.cc
-Configure miss: sys/ipc.cc presence
-Configure miss: sys/ipc.cc usability
 Configure miss: sys/md5.h
-Configure miss: sys/md5.h presence
-Configure miss: sys/md5.h usability
 Configure miss: sys/sysctl.h
 Configure miss: tdb.h
 Configure miss: upad128_t
 Configure miss: varargs.h
-Configure miss: varargs.h presence
-Configure miss: varargs.h usability
 Configure miss: w32api/windows.h
-Configure miss: w32api/windows.h presence
-Configure miss: w32api/windows.h usability
 Configure miss: wbinfo
 Configure miss: whether InetNtopA is declared
 Configure miss: whether InetPtonA is declared
 Configure miss: whether compiler requires -Werror -Wno-deprecated-register
 Configure miss: whether to support eCAP
 Configure miss: winldap.h
-Configure miss: winldap.h presence
-Configure miss: winldap.h usability
+Configure miss: x86_64-generic-linux-gnu-file
+Configure miss: x86_64-generic-linux-gnu-file
