@@ -7,7 +7,7 @@
 #
 Name     : squid
 Version  : 5.9
-Release  : 20
+Release  : 21
 URL      : https://squid.mirror.globo.tech/archive/5/squid-5.9.tar.xz
 Source0  : https://squid.mirror.globo.tech/archive/5/squid-5.9.tar.xz
 Source1  : squid.service
