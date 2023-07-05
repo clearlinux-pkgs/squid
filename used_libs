@@ -7,8 +7,8 @@ libgcc_s.so.1
 libgnutls.so.30
 libgssapi_krb5.so.2
 libkrb5.so.3
-liblber-2.4.so.2
-libldap-2.4.so.2
+liblber.so.2
+libldap.so.2
 libltdl.so.7
 libm.so.6
 libnettle.so.8
