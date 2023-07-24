@@ -1,9 +1,5 @@
-Configure miss: LDAP_REBINDPROC_CALLBACK
-Configure miss: LDAP_REBIND_FUNCTION
 Configure miss: LIBTDB
 Configure miss: MD5Init in -lmd5
-Configure miss: Mozilla LDAP SDK
-Configure miss: Sun LDAP SDK
 Configure miss: _ prefix in compiled symbols
 Configure miss: _ prefix in compiled symbols
 Configure miss: __htole16
@@ -24,15 +20,15 @@ Configure miss: dld.h
 Configure miss: dld_link in -ldld
 Configure miss: dld_link in -ldld
 Configure miss: eui64_aton
+Configure miss: g++ -std=c++17 options needed to detect all undeclared functions
 Configure miss: g++ option to enable C++11 features
-Configure miss: g++ options needed to detect all undeclared functions
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: glib.h
 Configure miss: gnumalloc.h
 Configure miss: htole16
 Configure miss: htole32
-Configure miss: if GNUregex needs to be compiled
+Configure miss: if g++ -std=c++17 static flag -static works
 Configure miss: if strnstr is well implemented
 Configure miss: ipl.h
 Configure miss: krb5_free_error_string in -lkrb5
@@ -49,7 +45,6 @@ Configure miss: library containing __res_search
 Configure miss: library containing nfct_query
 Configure miss: library containing opcom_stack_trace
 Configure miss: library containing res_init
-Configure miss: library containing strlcpy
 Configure miss: library containing yp_match
 Configure miss: libresolv _dns_ttl_ hack
 Configure miss: mach-o/dyld.h
@@ -67,12 +62,15 @@ Configure miss: net/pf/pfvar.h
 Configure miss: net/pfvar.h
 Configure miss: netinet/ipl.h
 Configure miss: pad128_t
+Configure miss: priv.h
+Configure miss: procctl
 Configure miss: regexec in -lregex
 Configure miss: res_init
 Configure miss: rpc/rpc.h
 Configure miss: rpcsvc/yp_prot.h
 Configure miss: rpcsvc/ypclnt.h
 Configure miss: sasl.h
+Configure miss: setpflags
 Configure miss: siginfo.h
 Configure miss: sin6_len field in struct sockaddr_in6
 Configure miss: sin_len field in struct sockaddr_in
@@ -85,6 +83,7 @@ Configure miss: sys/dl.h
 Configure miss: sys/event.h
 Configure miss: sys/ipc.cc
 Configure miss: sys/md5.h
+Configure miss: sys/procctl.h
 Configure miss: sys/sysctl.h
 Configure miss: tdb.h
 Configure miss: upad128_t
@@ -93,8 +92,8 @@ Configure miss: w32api/windows.h
 Configure miss: wbinfo
 Configure miss: whether InetNtopA is declared
 Configure miss: whether InetPtonA is declared
+Configure miss: whether compiler accepts -Werror=no-unused-private-field
 Configure miss: whether compiler requires -Werror -Wno-deprecated-register
-Configure miss: whether to support eCAP
 Configure miss: winldap.h
 Configure miss: x86_64-generic-linux-gnu-file
 Configure miss: x86_64-generic-linux-gnu-file
