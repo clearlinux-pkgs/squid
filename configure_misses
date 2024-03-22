@@ -192,7 +192,3 @@ Configure miss: whether compiler requires -Werror -Wno-deprecated-register
 Configure miss: whether compiler requires -Werror -Wno-deprecated-register
 Configure miss: winldap.h
 Configure miss: winldap.h
-Configure miss: x86_64-generic-linux-gnu-file
-Configure miss: x86_64-generic-linux-gnu-file
-Configure miss: x86_64-generic-linux-gnu-file
-Configure miss: x86_64-generic-linux-gnu-file
