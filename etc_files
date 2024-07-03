@@ -1,5 +1,5 @@
-/builddir/build/BUILDROOT/squid-6.9-29.x86_64/etc/:
-/builddir/build/BUILDROOT/squid-6.9-29.x86_64/etc/squid:
+/etc/:
+/etc/squid:
 cachemgr.conf
 cachemgr.conf.default
 errorpage.css

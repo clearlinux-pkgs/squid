@@ -1,6 +1,7 @@
-6.9
+6.10
 Linux-PAM-dev
 cyrus-sasl-dev
+file
 glib-dev
 krb5-dev
 openldap-dev
