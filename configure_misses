@@ -182,10 +182,6 @@ Configure miss: w32api/windows.h
 Configure miss: w32api/windows.h
 Configure miss: wbinfo
 Configure miss: wbinfo
-Configure miss: whether InetNtopA is declared
-Configure miss: whether InetNtopA is declared
-Configure miss: whether InetPtonA is declared
-Configure miss: whether InetPtonA is declared
 Configure miss: whether compiler accepts -Werror=no-unused-private-field
 Configure miss: whether compiler accepts -Werror=no-unused-private-field
 Configure miss: whether compiler requires -Werror -Wno-deprecated-register
