@@ -8,13 +8,13 @@
 # Source0 file verified with key 0x28F85029FEF6E865 (kinkie@squid-cache.org)
 #
 Name     : squid
-Version  : 6.12
-Release  : 33
-URL      : https://github.com/squid-cache/squid/releases/download/SQUID_6_12/squid-6.12.tar.bz2
-Source0  : https://github.com/squid-cache/squid/releases/download/SQUID_6_12/squid-6.12.tar.bz2
+Version  : 6.13
+Release  : 34
+URL      : https://github.com/squid-cache/squid/releases/download/SQUID_6_13/squid-6.13.tar.bz2
+Source0  : https://github.com/squid-cache/squid/releases/download/SQUID_6_13/squid-6.13.tar.bz2
 Source1  : squid.service
 Source2  : squid.tmpfiles
-Source3  : https://github.com/squid-cache/squid/releases/download/SQUID_6_12/squid-6.12.tar.bz2.asc
+Source3  : https://github.com/squid-cache/squid/releases/download/SQUID_6_13/squid-6.13.tar.bz2.asc
 Source4  : 28F85029FEF6E865.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -133,11 +133,11 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE4}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE3} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 28F85029FEF6E865' gpg.status
-%setup -q -n squid-6.12
-cd %{_builddir}/squid-6.12
+%setup -q -n squid-6.13
+cd %{_builddir}/squid-6.13
 %patch -P 1 -p1
 pushd ..
-cp -a squid-6.12 buildavx2
+cp -a squid-6.13 buildavx2
 popd
 
 %build
@@ -145,7 +145,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1742411804
+export SOURCE_DATE_EPOCH=1742417898
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -203,7 +203,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1742411804
+export SOURCE_DATE_EPOCH=1742417898
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squid
 cp %{_builddir}/squid-%{version}/COPYING %{buildroot}/usr/share/package-licenses/squid/4cc77b90af91e615a64ae04893fdffa7939db84c || :
